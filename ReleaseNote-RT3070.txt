@@ -1,0 +1,10 @@
+Version 2.0.1.0
+	1.Finished verifying RT3071 STA support.
+	2.Fix eFuse bug on big-endian platform
+	3.Fix WMM problem for RT3071/72
+	4.Fix bug for ATE TX power handling and ATE frequency offset bug.
+	5.Fix RT307x AMPDU throughput bug after interface down/up
+	6.Fix RT307x difficult to enter power save mode issue.
+	7.Fix bug that is hard to connect with hidden-SSID AP.
+	8.Update RT307x new firmware.
+
