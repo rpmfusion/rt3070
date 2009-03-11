@@ -2,13 +2,14 @@
 
 Name:		rt3070
 Version:	2.0.1.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Common files for RaLink rt3070 kernel driver
 Group:		System Environment/Kernel
 License:	GPLv2+
 URL:		http://www.ralinktech.com/ralink/Home/Support/Linux.html
 Source0:	http://www.ralinktech.com.tw/data/drivers/%{SourceName}.tar.bz2
 Source1:	http://www.ralinktech.com.tw/data/drivers/ReleaseNote-RT3070.txt
+Source2:	suspend.sh
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:	noarch
@@ -39,7 +40,10 @@ echo "Nothing to build."
 %install
 rm -rf $RPM_BUILD_ROOT
 install -dm 755 $RPM_BUILD_ROOT/%{_sysconfdir}/Wireless/RT3070STA/
-install  -p -m 0644 RT2870STA.dat $RPM_BUILD_ROOT/%{_sysconfdir}/Wireless/RT3070STA/RT3070STA.dat
+install -pm 0644 RT2870STA.dat $RPM_BUILD_ROOT/%{_sysconfdir}/Wireless/RT3070STA/RT3070STA.dat
+
+install -dm 755 $RPM_BUILD_ROOT/%{_datadir}/%{name}
+install -pm 0755 %{SOURCE2} $RPM_BUILD_ROOT/%{_datadir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -50,7 +54,11 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_sysconfdir}/Wireless
 %dir %{_sysconfdir}/Wireless/RT3070STA
 %config(noreplace) %{_sysconfdir}/Wireless/RT3070STA/RT3070STA.dat
+%{_datadir}/%{name}
 
 %changelog
+* Tue Mar 10 2009 Orcan Ogetbil <oget[DOT]fedora[AT]gmail[DOT]com> - 2.0.1.0-2
+- Add suspend script (RPMFusion BZ#199)
+
 * Thu Jan 15 2009 Orcan Ogetbil <oget [DOT] fedora [AT] gmail [DOT] com> - 2.0.1.0-1
 - Initial build
