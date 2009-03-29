@@ -2,7 +2,7 @@
 
 Name:		rt3070
 Version:	2.0.1.0
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Common files for RaLink rt3070 kernel driver
 Group:		System Environment/Kernel
 License:	GPLv2+
@@ -57,6 +57,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 
 %changelog
+* Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 2.0.1.0-3
+- rebuild for new F11 features
+
 * Tue Mar 10 2009 Orcan Ogetbil <oget[DOT]fedora[AT]gmail[DOT]com> - 2.0.1.0-2
 - Add suspend script (RPMFusion BZ#199)
 
