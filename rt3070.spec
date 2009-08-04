@@ -1,4 +1,4 @@
-%define SourceName 2009_0520_RT3070_Linux_STA_v2.1.1.0
+%define SourceName 2009_0525_RT3070_Linux_STA_v2.1.1.0
 
 Name:		rt3070
 Version:	2.1.1.0
@@ -7,7 +7,7 @@ Summary:	Common files for RaLink rt3070 kernel driver
 Group:		System Environment/Kernel
 License:	GPLv2+
 URL:		http://www.ralinktech.com/ralink/Home/Support/Linux.html
-Source0:	http://www.ralinktech.com.tw/data/drivers/%{SourceName}.tar.gz
+Source0:	http://www.ralinktech.com.tw/data/drivers/%{SourceName}.bz2
 Source1:	http://www.ralinktech.com.tw/data/drivers/ReleaseNote-RT3070.txt
 Source2:	suspend.sh
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -63,6 +63,9 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %{_sysconfdir}/Wireless/RT3070STA/RT3070STA*.dat
 
 %changelog
+* Tue Aug 04 2009 Orcan Ogetbil <oget [DOT] fedora [AT] gmail [DOT] com> - 2.1.1.0-3
+- *sigh* Upstream made a release without bumping the version
+
 * Wed Jun 17 2009 Orcan Ogetbil <oget [DOT] fedora [AT] gmail [DOT] com> - 2.1.1.0-2
 - Modify RT3070STA.dat to support WPA2 (RFBZ #664)
 
