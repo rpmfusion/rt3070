@@ -2,7 +2,7 @@
 
 Name:		rt3070
 Version:	2.1.1.0
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Common files for RaLink rt3070 kernel driver
 Group:		System Environment/Kernel
 License:	GPLv2+
