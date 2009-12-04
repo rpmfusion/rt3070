@@ -2,14 +2,18 @@
 
 Name:		rt3070
 Version:	2.1.1.0
-Release:	3%{?dist}
+Release:	3%{?dist}.1
 Summary:	Common files for RaLink rt3070 kernel driver
 Group:		System Environment/Kernel
 License:	GPLv2+
 URL:		http://www.ralinktech.com/ralink/Home/Support/Linux.html
 Source0:	http://www.ralinktech.com.tw/data/drivers/%{SourceName}.bz2
 Source1:	http://www.ralinktech.com.tw/data/drivers/ReleaseNote-RT3070.txt
+# Alternative suspend script. Might not be necessary anymore.
+# Kept for historical reasons.
 Source2:	suspend.sh
+# Blacklist the module shipped with kernel
+Source3:	blacklist-rt2800usb.conf
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:	noarch
@@ -52,17 +56,24 @@ install -pm 0644 RT2870STACard.dat $RPM_BUILD_ROOT/%{_sysconfdir}/Wireless/RT307
 
 cp -a %{SOURCE2} .
 
+install -dm 755 $RPM_BUILD_ROOT/%{_sysconfdir}/modprobe.d/
+cp -a %{SOURCE3} $RPM_BUILD_ROOT/%{_sysconfdir}/modprobe.d/
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%doc README_STA* *.txt suspend.sh
+%doc README_STA_usb *.txt suspend.sh
 %dir %{_sysconfdir}/Wireless
 %dir %{_sysconfdir}/Wireless/RT3070STA
 %config(noreplace) %{_sysconfdir}/Wireless/RT3070STA/RT3070STA*.dat
+%config(noreplace) %{_sysconfdir}/modprobe.d/blacklist-rt2800usb.conf
 
 %changelog
+* Fri Dec 04 2009 Orcan Ogetbil <oget [DOT] fedora [AT] gmail [DOT] com> - 2.1.1.0-3.1
+- Blacklist kernel's rt2800usb module
+
 * Tue Aug 04 2009 Orcan Ogetbil <oget [DOT] fedora [AT] gmail [DOT] com> - 2.1.1.0-3
 - *sigh* Upstream made a release without bumping the version
 
