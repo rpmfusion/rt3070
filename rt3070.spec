@@ -1,7 +1,7 @@
-%define SourceName DPO_RT3070_LinuxSTA_V2.3.0.2_20100412
+%define SourceName DPO_RT3070_LinuxSTA_V2.3.0.4_20100604
 
 Name:		rt3070
-Version:	2.3.0.2
+Version:	2.3.0.4
 Release:	1%{?dist}
 Summary:	Common files for RaLink rt3070 kernel driver
 Group:		System Environment/Kernel
@@ -37,11 +37,11 @@ cp -a %{SOURCE2} .
 
 # Fix bunch of encoding issues
 
-for file in ReadMe.txt *iwpriv_usage.txt "LICENSE*.txt" README_STA*; do
-	chmod -x $file
-	iconv -f JOHAB -t UTF8 $file -o $file.tmp
-	sed 's/\r//' $file.tmp > $file.tmp2
-	mv -f $file.tmp2 $file
+for file in ReadMe.txt *iwpriv_usage.txt LICENSE\ ralink-firmware.txt README_STA*; do
+	chmod -x "$file"
+	iconv -f JOHAB -t UTF8 "$file" -o "$file.tmp"
+	sed 's/\r//' "$file.tmp" > "$file.tmp2"
+	mv -f "$file.tmp2" "$file"
 done
 
 # To avoid possible conflict with rt2870 driver:
@@ -59,7 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 install -dm 755 $RPM_BUILD_ROOT/%{_sysconfdir}/Wireless/RT3070STA/
 install -pm 0644 RT2870STA.dat $RPM_BUILD_ROOT/%{_sysconfdir}/Wireless/RT3070STA/RT3070STA.dat
 install -pm 0644 RT2870STACard.dat $RPM_BUILD_ROOT/%{_sysconfdir}/Wireless/RT3070STA/RT3070STACard.dat
-%if 0%{fedora} < 14
+%if 0%{fedora} < 15
 install -dm 755 $RPM_BUILD_ROOT/%{_sysconfdir}/modprobe.d/
 cp -a %{SOURCE3} $RPM_BUILD_ROOT/%{_sysconfdir}/modprobe.d/
 %endif
@@ -78,6 +78,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Tue Aug 31 2010 Orcan Ogetbil <oget [DOT] fedora [AT] gmail [DOT] com> - 2.3.0.4-1
+- Update to 2.3.0.4
+
 * Sun Jun 27 2010 Orcan Ogetbil <oget [DOT] fedora [AT] gmail [DOT] com> - 2.3.0.2-1
 - Update to 2.3.0.2
 
