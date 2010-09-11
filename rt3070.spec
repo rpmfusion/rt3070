@@ -59,7 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 install -dm 755 $RPM_BUILD_ROOT/%{_sysconfdir}/Wireless/RT3070STA/
 install -pm 0644 RT2870STA.dat $RPM_BUILD_ROOT/%{_sysconfdir}/Wireless/RT3070STA/RT3070STA.dat
 install -pm 0644 RT2870STACard.dat $RPM_BUILD_ROOT/%{_sysconfdir}/Wireless/RT3070STA/RT3070STACard.dat
-%if 0%{fedora} < 14
+%if 0%{fedora} < 15
 install -dm 755 $RPM_BUILD_ROOT/%{_sysconfdir}/modprobe.d/
 cp -a %{SOURCE3} $RPM_BUILD_ROOT/%{_sysconfdir}/modprobe.d/
 %endif
