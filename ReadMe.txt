@@ -1,3 +1,14 @@
+[V2.3.0.4]
+1. Fix ATE cannot switch Channel issue.
+2. Fix ATE calibrate TX Power not work correctly issue.
+
+[2.3.0.3]
+1. Add "RESOURCE_PRE_ALLOC" support.
+
+[2.3.0.2]
+1. Add DWA-121(RT8070) VID/PID.
+2. Fix wap_supplicant countermeasure re-connect issue.
+
 [2.3.0.1]
 1. Fix Shared WEP security mode can't work on wpa_supplicant wext driver.
 2. Fix Hidden SSID can't work on wpa_supplicant wext driver.
