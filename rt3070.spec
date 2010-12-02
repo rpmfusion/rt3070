@@ -2,7 +2,7 @@
 
 Name:		rt3070
 Version:	2.3.0.4
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Common files for RaLink rt3070 kernel driver
 Group:		System Environment/Kernel
 License:	GPLv2+
@@ -78,6 +78,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Thu Dec 02 2010 Orcan Ogetbil <oget [DOT] fedora [AT] gmail [DOT] com> - 2.3.0.4-2
+- Rebuild. Somehow the package did not end up in the F-14 repo.
+
 * Tue Aug 31 2010 Orcan Ogetbil <oget [DOT] fedora [AT] gmail [DOT] com> - 2.3.0.4-1
 - Update to 2.3.0.4
 
