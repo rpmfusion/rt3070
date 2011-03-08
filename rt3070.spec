@@ -2,7 +2,7 @@
 
 Name:		rt3070
 Version:	2.3.0.4
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Common files for RaLink rt3070 kernel driver
 Group:		System Environment/Kernel
 License:	GPLv2+
@@ -73,11 +73,14 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_sysconfdir}/Wireless
 %dir %{_sysconfdir}/Wireless/RT3070STA
 %config(noreplace) %{_sysconfdir}/Wireless/RT3070STA/RT3070STA*.dat
-%if 0%{fedora} < 14
+%if 0%{fedora} < 15
 %config(noreplace) %{_sysconfdir}/modprobe.d/blacklist-rt2800usb.conf
 %endif
 
 %changelog
+* Mon Mar 07 2011 Orcan Ogetbil <oget [DOT] fedora [AT] gmail [DOT] com> - 2.3.0.4-3
+- Fix Fedora version conditional
+
 * Thu Dec 02 2010 Orcan Ogetbil <oget [DOT] fedora [AT] gmail [DOT] com> - 2.3.0.4-2
 - Rebuild. Somehow the package did not end up in the F-14 repo.
 
